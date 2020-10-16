@@ -1,0 +1,70 @@
+1)
+#!/bin/bash -x
+shopt -s extglob
+
+echo "Enter First Name"
+read fname
+
+echo "Enter Last Name"
+read lname
+
+echo "Enter Email-Id"
+read email
+
+echo "Enter the Phone-number"
+read num
+
+#FirstName 
+pat1="^[A-Z]{1}[a-zA-Z]{2,}$"  
+#Last Name
+pat2="^[A-Z]{1}[a-zA-Z]{2,}$"
+#Email Validation
+pat3="^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})?$"
+#PhoneNumber
+pat4="^(91){1}[[:space:]][1-9]{1}[0-9]{9}$"
+
+
+if [[ $fname =~ $pat1 ]]
+then
+  echo "Valid"
+else
+  echo "Invalid"
+fi
+
+if [[ $lname =~ $pat2 ]]
+then
+  echo "Valid"
+else
+  echo "Invalid"
+fi
+
+if [[ $email =~ $pat3 ]]
+then
+   echo "Valid"
+else
+  echo "Invalid"
+fi
+
+if [[ $num =~ $pat4 ]]
+then
+  echo "Valid"
+else
+  echo "Not Valid"
+fi
+
+2)
+#!/bin/bash -x
+shopt -s extglob
+
+echo "Enter the password"
+read pass
+
+#Password Pattern
+pat="^[a-zA-Z0-9]*(\!|\@|\#|\_|\-)[a-zA-Z0-9]*$"
+
+if [[ ${#pass} -ge 8 ]] && [[ $pass =~ $pat ]] && [[ $pass =~ [[:upper:]]+ ]] && [[ $pass =~ [[:digit:]]+ ]]
+then
+        echo "Password Valid"
+else
+        echo "Password Not Valid"
+fi
